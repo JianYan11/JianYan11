@@ -44,6 +44,14 @@ How should a model listen, reason, and respond in a live conversation?
 
 </details>
 
+## OpenAI Model Craft Challenge · Parameter Golf
+
+I participated in OpenAI's **Parameter Golf** challenge, which asks participants to train a language model with the best text-compression score under tight resource constraints. The main track limits the combined code and compressed model artifact to **16 MB** and training to **10 minutes on eight H100 GPUs**, with performance measured in bits per byte (bpb) on the FineWeb validation set.
+
+My work focused on a small architecture change: replacing the baseline MLP's **ReLU² with LeakyReLU(0.5)²** to preserve gradient flow for negative inputs without adding parameters. I implemented the change and submitted it as a baseline improvement.
+
+In my reported **600-second experiments on two RTX 5090 GPUs**, the modified model achieved **1.2947 bpb**, compared with **1.3822 bpb** for the baseline (lower is better). The runs reached **1,947 and 1,000 training steps**, respectively, making this a comparison under the same time budget on my hardware.
+
 ## A little more about me
 
 I study Electronic Information at **Beijing Jiaotong University**, and pursue a second degree in Economics at **Peking University's National School of Development**. My earlier work includes [semi-supervised ionogram detection](https://github.com/JianYan11/SEMI-DETR) and computational imaging.
